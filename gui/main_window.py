@@ -1,3 +1,8 @@
+
+"""
+Main Window GUI
+"""
+
 from PySide6.QtWidgets import (
     QMainWindow,
     QWidget,
@@ -7,6 +12,7 @@ from PySide6.QtWidgets import (
 
 from gui.convert_page import ConvertPage
 from gui.reader_page import ReaderPage
+from gui.ftp_page import FTPPage
 
 
 class MainWindow(QMainWindow):
@@ -15,10 +21,10 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         self.setWindowTitle(
-            "Mail Document System"
+            "Mail Management System"
         )
 
-        self.setMinimumSize(1200, 800)
+        self.setMinimumSize(1400, 900)
 
         self.init_ui()
 
@@ -32,12 +38,17 @@ class MainWindow(QMainWindow):
 
         tabs.addTab(
             ConvertPage(),
-            "Convert Mail"
+            "Convert"
         )
 
         tabs.addTab(
             ReaderPage(),
-            "EML Reader"
+            "Reader"
+        )
+
+        tabs.addTab(
+            FTPPage(),
+            "Remote Explorer"
         )
 
         layout.addWidget(tabs)
@@ -47,4 +58,3 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(
             central_widget
         )
-
